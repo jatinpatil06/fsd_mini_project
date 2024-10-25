@@ -1,3 +1,9 @@
+require('dotenv').config();
+if (!process.env.CONNECTION_STRING || !process.env.PORT) {
+    console.error("Environment variables not loaded");
+    process.exit(1);
+}
+console.log(process.env);
 const express = require('express')
 const app = express()
 app.use(express.json());
@@ -19,10 +25,10 @@ app.post('/api/comments', async (req,res) => {
     }
 });
 
-mongoose.connect('mongodb+srv://jatinpatil287:vioJxDO1Ewto1STY@backenddb.3vwoy.mongodb.net/Node-API?retryWrites=true&w=majority&appName=backendDB')
+mongoose.connect(process.env.CONNECTION_STRING)
     .then(() => {
         console.log('Connected!');
-        app.listen(3000, () => {
+        app.listen(process.env.PORT, () => {
             console.log("Server is runnning on port 3000");
         })
     })
