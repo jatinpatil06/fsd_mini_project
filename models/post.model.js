@@ -37,4 +37,7 @@ const PostSchema = mongoose.Schema(
             required : true,
         },
     }
-)
+);
+
+const Post = mongoose.model("POST", PostSchema);
+module.exports = Post;
