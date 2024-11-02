@@ -13,6 +13,8 @@ const commentRoute = require("./routes/comment.route.js");
 app.use("/api/comments", commentRoute);
 const postRoute = require("./routes/post.route.js");
 app.use("/api/posts", postRoute);
+const userRoute = require("./routes/user.route.js");
+app.use("/api/users", userRoute);
 
 mongoose.connect(CONNECT_STR)
     .then(() => {
